@@ -64,15 +64,31 @@ public class Executable {
 
     private void jugadaMaquina() {
         cont.jugadaAleatoria();
-        System.out.println("La máquina ha realizado su jugada.");
+        System.out.println("La maquina realizo su jugada.");
         imprimirTablero();
     }
 
     private void jugadaHumano() {
-        // Implementación de jugada de humano
+        System.out.println("Ingrese la fila (0, 1, 2):");
+        int fila = reader.nextInt();
+        System.out.println("Ingrese la columna (0, 1, 2):");
+        int columna = reader.nextInt();
+    
+        boolean jugadaExitosa = cont.jugadaHumano(fila, columna);
+        if (jugadaExitosa) {
+            System.out.println("Se realizo la jugada.");
+        } else {
+            System.out.println("La casilla ya esta ocupada o la ubicacion no es valida. Vuelva a intentarlo");
+        }
+        imprimirTablero();
     }
-
+    
     private void validarGanador() {
-        // Implementación de la validación si alguien ya ganó el triqui
+        String ganador = cont.verificarGanador();
+        if (ganador == null) {
+            System.out.println("Aun no hay ganador");
+        } else {
+            System.out.println("El ganador es: " + ganador );
+        }
     }
 }
